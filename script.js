@@ -1,6 +1,16 @@
 // 定数・初期設定
-let HOME = { lat: 35.6812, lng: 139.7671, name: "基準地点（東京駅）" };
 
+// URLパラメータから座標を取得する仕組み
+const urlParams = new URLSearchParams(window.location.search);
+const latParam  = urlParams.get('lat');
+const lngParam  = urlParams.get('lng');
+
+// 座標の決定（URLにあればそれ、なければ東京駅）
+let HOME = (latParam && lngParam) 
+    ? { lat: parseFloat(latParam), lng: parseFloat(lngParam), name: "マイホーム（URL指定）" }
+    : { lat: 35.6812, lng: 139.7671, name: "基準地点（東京駅）" };
+
+// 以降、既存の map 初期化コードなど...
 const map = L.map('map').setView([35.6, 139.7], 9);
 
 /** OpenStreetMap（OSM）の地図を使う版 commented out by gemini
