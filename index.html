@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地震情報マップ</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>地震情報マップ</h1>
+    <span class="meta" id="updated">データ取得中...</span>
+  </header>
+    <!-- added by gemini / start -->
+  <div class="home-setter">
+    <div class="input-group">
+      <label>緯度</label>
+      <input type="number" id="home-lat" value="35.6812" step="0.0001">
+    </div>
+    <div class="input-group">
+      <label>経度</label>
+      <input type="number" id="home-lng" value="139.7671" step="0.0001">
+    </div>
+    <button id="update-home-btn">拠点を更新</button>
+  </div>
+    <!-- added by gemini / end -->
+  <div class="layout">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span>最新10件（P2P地震情報）</span>
+        <button class="reload" id="reload-btn">再読み込み ↻</button>
+      </div>
+      <div class="eq-list" id="eq-list">
+        <div class="loading">読み込み中...</div>
+      </div>
+      <div class="result-bar" id="result-bar">
+        <span style="color:#aaa">地震を選ぶと距離が表示されます</span>
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
